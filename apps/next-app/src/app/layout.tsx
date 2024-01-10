@@ -3,7 +3,6 @@ import './globals.css'
 
 import ThemeRegistry from '@/components/Providers/ThemeRegistry'
 import { PropsWithChildren } from 'react'
-import { LayoutNavbar } from '@/components/LayoutNavbar'
 import NavbarContainer from '@/containers/NavbarContainer'
 
 
@@ -18,10 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <ThemeRegistry options={{ key: 'mui' }}>
-        <NavbarContainer />
-        {children}
-      </ThemeRegistry>
+        <ThemeRegistry options={{ key: 'mui' }}>
+          <NavbarContainer />
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   )

@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BodyMenu, Column, Group, SubMenuButton } from 'ui-material';
+import { BodyMenu, Column, Group, PacificoNavbarProvider, SubMenuButton } from 'ui-material';
 
 
 const meta = {
+  decorators:[(Story)=><PacificoNavbarProvider>
+    <Story />
+  </PacificoNavbarProvider>],
   title: 'Molecules/Submenu button',
   component: SubMenuButton,
   parameters: {
@@ -110,6 +113,7 @@ export const WithMenuBody: Story = {
   args: {
     label: 'Sub menu',
     drawerProps: {},
+    hasDrawer: true,
     children: <BodyMenu sx={{
         m: 2,
         display: 'flex',

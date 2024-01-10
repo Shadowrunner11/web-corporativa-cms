@@ -9,7 +9,12 @@ export interface SectionResponse {
   "props": {
     "cards": [
       {
-        "title": string
+        headerTitle: string;
+        imgURL: string;
+        contentText: string;
+        linkText?: string;
+        href: string;
+        isHighlited?: boolean;
       }
     ]
   },
@@ -38,7 +43,7 @@ export class ContentfulCMSProvider implements DataProvider<ComponentResponse>{
   constructor(
     private client: GraphQLClient, 
     @inject('Resolver') private resolver: CMSResolver, 
-    @inject('Request')private requests = defaultRequests
+    @inject('Request') private requests = defaultRequests
   ){}
 
   async getOne(id: StringOrNumber, meta: {requestName: string}){

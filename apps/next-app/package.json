@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
     "@testing-library/react": "^14.1.0",
+    "clsx": "^2.0.0",
     "data-provider-types": "workspace:*",
     "material-react-table": "^2.0.2",
     "next": "14.0.1",
