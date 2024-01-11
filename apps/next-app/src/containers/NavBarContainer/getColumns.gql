@@ -1,0 +1,12 @@
+query GetColumns {
+	columnsCollection{
+		items{
+			name
+			topicsCollection{
+				items{
+					name
+				}
+			}
+		}
+	}
+}

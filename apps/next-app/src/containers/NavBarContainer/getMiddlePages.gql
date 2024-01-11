@@ -1,0 +1,18 @@
+query GeMiddlePages {
+	middlePageCollection{
+		items{
+			sys{
+				id
+			}
+			slug
+			title
+			childrenPagesCollection{
+				items{
+					isInNavbar
+					slug
+					title
+				}
+			}
+		}
+	}
+}

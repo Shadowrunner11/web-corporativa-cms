@@ -3,7 +3,7 @@ import './globals.css'
 
 import ThemeRegistry from '@/components/Providers/ThemeRegistry'
 import { PropsWithChildren } from 'react'
-import NavbarContainer from '@/containers/NavbarContainer'
+import NavbarContainer from '@/containers/NavBarContainer'
 
 
 export const metadata: Metadata = {

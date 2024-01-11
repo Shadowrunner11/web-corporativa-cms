@@ -1,12 +1,12 @@
 import { type DataProvider, StringOrNumber } from "data-provider-types";
-import { inject, singleton } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 import pino from 'pino'
 import { ComponentResponse } from "@/types";
 
 // TODO: create a interface for data providers that requires only read operations for CMS
 
-@singleton()
+@injectable()
 export class ErrorProxyCMS implements DataProvider{
   static logger = pino()
 

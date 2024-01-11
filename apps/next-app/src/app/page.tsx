@@ -4,7 +4,7 @@ import { PromotionsContainer } from '@/containers/PromotionsContainer'
 export default function Home() {
   return (
     <main>
-      <HeroContainer /> 
+      {/* <HeroContainer />  */}
       <PromotionsContainer
         cards={[
           {
