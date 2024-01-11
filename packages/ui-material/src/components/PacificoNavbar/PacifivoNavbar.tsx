@@ -30,7 +30,7 @@ function PacificoNavbar({items, drawerStrategyDesktop = 'sibling',  ...props}: R
     {...props}
     navItemsMobile={[]}
     navItemsDesktop={items.map(({url, items, label})=>{
-      if(url && !items)
+      if(url && !items?.length)
         return <Box key={label} display='flex' alignItems='center'>
             <Link href={url}>{label}</Link>
           </Box>
