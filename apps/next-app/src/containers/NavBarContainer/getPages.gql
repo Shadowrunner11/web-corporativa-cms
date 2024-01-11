@@ -1,11 +1,10 @@
-query GetColumns {
-	columnsCollection{
+query GetPages {
+ 	pageCollection{
 		items{
-			sys{
-				id
-			}
-			name
-			topicsCollection{
+			isInNavbar
+			slug
+			title
+			columnsCollection{
 				items{
 					sys{
 						id

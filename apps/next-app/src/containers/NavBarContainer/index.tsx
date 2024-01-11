@@ -8,28 +8,9 @@ import queryGetTopics from 'raw-loader!./getTopics.gql'
 import queryGetMiddlePages from 'raw-loader!./getMiddlePages.gql'
 
 import { PacificoNavbarItem } from "ui-material";
-import { indexBy, path, prop } from "ramda";
+import { indexBy, pathOr } from "ramda";
+import { Maybe } from "graphql/jsutils/Maybe";
 
-
-function transformContenfullItemsToPageItems(contenfullItems: Page[]): PacificoNavbarItem[]{
-  return contenfullItems.map(({title, slug, columnsCollection})=>({
-    label: title ?? '',
-    url: columnsCollection? `/${slug}` : undefined,
-    items: columnsCollection?.items?.map((column)=>({
-      groups: column?.topicsCollection?.items?.map((topic)=>({
-        label: topic?.title ?? '',
-        items: topic?.itemsCollection?.items?.map((subpage)=>({
-          label: subpage?.title ?? '',
-          url: `/${slug}/${subpage?.slug}`,
-          items: subpage?.childrenPagesCollection?.items?.map((endPage)=>({
-            label: endPage?.title ?? '',
-            url: `/${slug}/${subpage?.slug}/${endPage?.slug}`
-          }))
-        })) ?? []
-      })) ?? []
-    }))
-  }))
-}
 
 async function contentfulGqlFetch<T = any>(documentName: string, query: string): Promise<T[]>{
   const { data: responseData } = await graphqlClient.request(query)
@@ -40,6 +21,23 @@ async function contentfulGqlFetch<T = any>(documentName: string, query: string):
 
 type NavigationCollections = [Page[], Columns[], Topic[], MiddlePage[]]
 
+
+const getIdOrEmpty = pathOr<string>('', ['sys', 'id'])
+
+const resolveMiddlePage = (middlePagesById: Record<string, MiddlePage>)=>
+  (middlePage: Maybe<MiddlePage>)=>{
+    const middlePageData = middlePagesById[getIdOrEmpty(middlePage)] ?? {}
+  
+    return {
+      label: middlePageData.title ?? '',
+      url: middlePageData.slug ?? undefined,
+      items: middlePage?.childrenPagesCollection?.items.map((childrenPage)=>({
+        label: childrenPage?.title ?? '',
+        url: childrenPage?.slug ?? undefined
+      }))
+    }
+  }
+
 async function getNavigationData(): Promise<PacificoNavbarItem[]>{
   const [page, columns, topics, middlePages] : NavigationCollections = await Promise.all([
     contentfulGqlFetch('pageCollection', queryGetPages),
@@ -48,20 +46,26 @@ async function getNavigationData(): Promise<PacificoNavbarItem[]>{
     contentfulGqlFetch('middlePageCollection', queryGetMiddlePages)
   ])
 
-  const getId = path<string>(['sys', 'id'])
-  const middlePagesById = indexBy(getId, middlePages)
-  const topicsById = indexBy(getId, topics.map(({itemsCollection})=> itemsCollection?.items))
-  const columnsById = indexBy(getId, columns);
+  const middlePagesById = indexBy(getIdOrEmpty, middlePages)
+  const topicsById = indexBy(getIdOrEmpty, topics)
+  const columnsById = indexBy(getIdOrEmpty, columns);
 
-  return page.map(({slug, title, sys: { id }, columnsCollection})=>({
-    label: title,
-    url: slug,
-    items: columnsCollection?.items?.map((column)=> columnsById[column?.sys.id ?? ''])
+  const transformMiddlePage = resolveMiddlePage(middlePagesById)
+  
+  return page.map(({slug, title, columnsCollection})=>({
+    label: title ?? '',
+    url: slug ?? undefined,
+    items: columnsCollection?.items?.map((column)=> ({ 
+      groups: columnsById[getIdOrEmpty(column)]?.topicsCollection?.items.map((topic)=>({
+        label: topicsById[getIdOrEmpty(topic)].title ?? '',
+        items: topicsById[getIdOrEmpty(topic)].itemsCollection?.items.map(transformMiddlePage) ?? []
+      })) ?? []
+    }))
   }))
 }
 
 export default async function NavbarContainer(){
-  const data = await fetchPages()
+  const data = await getNavigationData()
 
   return <LayoutNavbar items={data} />
 }

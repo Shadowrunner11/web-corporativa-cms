@@ -4,10 +4,11 @@ query GetTopics {
 			sys{
 				id
 			}
-			name
 			itemsCollection{
 				items{
-					slug
+					sys{
+						id
+					}
 				}
 			}
 		}

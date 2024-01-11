@@ -1,10 +1,15 @@
 query GetColumns {
 	columnsCollection{
 		items{
+			sys{
+				id
+			}
 			name
 			topicsCollection{
 				items{
-					name
+					sys{
+						id
+					}
 				}
 			}
 		}
