@@ -1,7 +1,7 @@
 import { singleton } from "tsyringe"
 import { FetchClient, RequestInit } from "../FetchClient"
 
-interface RequestOptions{
+export interface RequestOptions{
   fetchClientOptions?: RequestInit,
   variables?: Record<string, string>
 }

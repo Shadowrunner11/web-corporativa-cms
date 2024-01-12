@@ -8,8 +8,11 @@ import { CMSResolver, ContentfulCMSProvider, GetOneRawResponse, SectionResponse 
 import { RequestInit } from "@/services/FetchClient";
 import { GraphQLClient } from "@/services/GraphQLCLient";
 import { CacheEnvironmentConfig } from "@/services/Enviroment/CacheEnviromentConfig";
+import { EnvironmentConfig } from "@/services/Enviroment/EnviromentConfig";
 
-const globalEnvService = new CacheEnvironmentConfig();
+export const globalEnvService = new EnvironmentConfig();
+
+export const globalCacheEnvService = new CacheEnvironmentConfig(globalEnvService);
 
 container.registerInstance('DataTable', {pages: {
   staticData:{
@@ -23,10 +26,11 @@ container.registerInstance('DataTable', {pages: {
 }})
 
 container.registerInstance<RequestInit>('FetchOptions',{
-  baseURL: globalEnvService.getEnv('CMS_URL'),
+  baseURL: globalCacheEnvService.getEnv('CMS_URL'),
   headers:{
-    'Authorization': globalEnvService.getEnv('CMS_TOKEN')
-  }
+    'Authorization': globalCacheEnvService.getEnv('CMS_TOKEN')
+  },
+  cache: globalCacheEnvService.getEnv('NO_CACHE') ?'no-cache' : undefined
 })
 
 
@@ -51,7 +55,7 @@ const ProvidersMap: Record<string, any> = {
 }
 
 
-const currentProviderName = globalEnvService.getEnv('NEXT_DATA_PROVIDER', {
+const currentProviderName = globalCacheEnvService.getEnv('NEXT_DATA_PROVIDER', {
   defaultValue: 'contentfulProvider'
 })
 

@@ -42,7 +42,7 @@ export class EnvironmentConfig{
   getEnvOrThrow(envName: string, options: Options = {}){
     options.isRequired = true;
 
-    return this.getEnv(envName, options);
+    return this.getEnv(envName, options) as string;
   }
   
 }

@@ -4,13 +4,6 @@ query GetPages {
 			isInNavbar
 			slug
 			title
-			columnsCollection{
-				items{
-					sys{
-						id
-					}
-				}
-			}
 		}
 	}
 }
