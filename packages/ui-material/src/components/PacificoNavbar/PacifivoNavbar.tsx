@@ -6,6 +6,7 @@ import BodyMenu from "./BodyMenu";
 import { CampaignOutlined, LocalPhoneOutlined, PersonOutlineOutlined } from "@mui/icons-material";
 import useMenuOperations from "./hooks/useMenuOperations";
 import { renderDrawer } from "./renderOperation";
+import { sxStyleNavBarText } from "./styles";
 
 export interface PacificoNavbarItem{
   label: string
@@ -32,7 +33,7 @@ function PacificoNavbar({items, drawerStrategyDesktop = 'sibling',  ...props}: R
     navItemsDesktop={items.map(({url, items, label})=>{
       if(url && !items?.length)
         return <Box key={label} display='flex' alignItems='center'>
-            <Link href={url}>{label}</Link>
+            <Link href={url} sx={sxStyleNavBarText}>{label}</Link>
           </Box>
 
       return (<SubMenuButton
@@ -40,7 +41,8 @@ function PacificoNavbar({items, drawerStrategyDesktop = 'sibling',  ...props}: R
         sx={{
           textTransform: 'unset',
           p: 0,
-          fontSize: '1rem'
+          fontSize: '1rem',
+          ...sxStyleNavBarText
         }} 
         key={label} 
         label={label}
