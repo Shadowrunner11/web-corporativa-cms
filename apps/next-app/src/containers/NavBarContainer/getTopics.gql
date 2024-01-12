@@ -1,6 +1,7 @@
 query GetTopics {
 	topicCollection{
 		items{
+			title
 			sys{
 				id
 			}
