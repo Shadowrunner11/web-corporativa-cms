@@ -13,7 +13,7 @@ const MenuGroup = ({items, label, LinkComponent = Link}: MenuGroupProps)=>(
       {label}
     </Typography>
     {
-      items.map(({label, url, items})=> items ? (
+      items.map(({label, url, items})=> items?.length ? (
         <NavSubmenu
         key={label} 
           label={label} 

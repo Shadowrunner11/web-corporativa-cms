@@ -1,15 +1,24 @@
-import { indexBy } from "ramda";
 
 import { PageGroup } from "@/gql/graphql";
 import { getContentfulIdOrEmpty } from "@/utils/contentful";
 import { getNavigationData } from "@/utils/contentful/navigationDataFetch";
+import { 
+  getByContentfulId, 
+  getColumns, 
+  getEndPages, 
+  getMiddlePages, 
+  getTopics 
+} from "@/utils/contentful/parseNavigationData";
 
 
+
+// TODO: this actually is n pow 3, there should be a way to lessen complexity
+// TODO: maybe use recursion
 export async function generateStaticParams(){
   const [pages, topics, middlePages] = await getNavigationData()
 
-  const topicsById = indexBy(getContentfulIdOrEmpty, topics)
-  const middlePagesById = indexBy(getContentfulIdOrEmpty, middlePages)
+  const getTopicById = getByContentfulId(topics)
+  const getMiddlePagesById = getByContentfulId(middlePages)
 
   const flatSlugs = pages.flatMap(pageOrGroup =>{
     const {__typename, slug: mainSlug } = pageOrGroup
@@ -19,22 +28,27 @@ export async function generateStaticParams(){
         slug:[ mainSlug!]
       }]
 
-    const pageGroup = pageOrGroup as PageGroup
+    const middlePages = getColumns(pageOrGroup as PageGroup)
+      .flatMap(getTopics)
+      .map(getContentfulIdOrEmpty)
+      .map(getTopicById)
+      .flatMap(getMiddlePages)
+      .map(getContentfulIdOrEmpty)
+      .map(getMiddlePagesById)
+     
+    return middlePages.flatMap(middlePage => {
+      const { slug } = middlePage
 
-    const middlePages = pageGroup.columnsCollection?.items
-      .flatMap(
-        (column)=>column?.topicsCollection?.items
-          .flatMap((topic)=>topicsById[getContentfulIdOrEmpty(topic)].itemsCollection?.items
-            .map(middlePage => middlePagesById[getContentfulIdOrEmpty(middlePage)]) ?? []
-          ) ?? []
-      ) ?? []
-    
-    return middlePages.map(middleware => ({slug:[mainSlug!, middleware.slug!]}))
+      return getEndPages(middlePage)
+        .map((endPage)=>({
+          slug: [mainSlug!, slug!, endPage.slug!]
+        }))
+        .concat([{slug:[mainSlug!, slug!]}])
+    })
   })  
 
   return flatSlugs
 }
-
 
 interface PageProps{
   params:{

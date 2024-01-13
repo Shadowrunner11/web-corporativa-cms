@@ -1,17 +1,17 @@
 query GetTopics {
-	topicCollection{
-		items{
-			title
-			sys{
-				id
-			}
-			itemsCollection{
-				items{
-					sys{
-						id
-					}
-				}
-			}
-		}
-	}
+  topicCollection {
+    items {
+      title
+      sys {
+        id
+      }
+      itemsCollection {
+        items {
+          sys {
+            id
+          }
+        }
+      }
+    }
+  }
 }

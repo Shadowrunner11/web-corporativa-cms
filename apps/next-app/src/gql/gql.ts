@@ -13,11 +13,11 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "query GeWebData($id: String!) {\n  webData(id: $id) {\n    contentCollection {\n      items {\n        __typename\n        ... on Page {\n          title\n          slug\n        }\n        ... on PageGroup {\n          title\n          columnsCollection(limit: 4) {\n            items {\n              topicsCollection(limit: 5) {\n                items {\n                  sys {\n                    id\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.GeWebDataDocument,
     "query GetColumns {\n  columnsCollection {\n    items {\n      sys {\n        id\n      }\n      topicsCollection {\n        items {\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}": types.GetColumnsDocument,
-    "query GeMiddlePages {\n  middlePageCollection {\n    items {\n      sys {\n        id\n      }\n      slug\n      title\n      childrenPagesCollection {\n        items {\n          isInNavbar\n          slug\n          title\n        }\n      }\n    }\n  }\n}": types.GeMiddlePagesDocument,
     "query GetPages {\n  pageCollection {\n    items {\n      isInNavbar\n      slug\n      title\n    }\n  }\n}": types.GetPagesDocument,
+    "query GeMiddlePages {\n  middlePageCollection {\n    items {\n      sys {\n        id\n      }\n      slug\n      title\n      externalHref\n      childrenPagesCollection(limit: 4) {\n        items {\n          isInNavbar\n          slug\n          title\n          externalHref\n        }\n      }\n    }\n  }\n}": types.GeMiddlePagesDocument,
     "query GetTopics {\n  topicCollection {\n    items {\n      title\n      sys {\n        id\n      }\n      itemsCollection {\n        items {\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}": types.GetTopicsDocument,
+    "query GeWebData($id: String!) {\n  webData(id: $id) {\n    contentCollection {\n      items {\n        __typename\n        ... on Page {\n          title\n          slug\n          externalHref\n        }\n        ... on PageGroup {\n          title\n          slug\n          columnsCollection(limit: 4) {\n            items {\n              topicsCollection(limit: 5) {\n                items {\n                  sys {\n                    id\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.GeWebDataDocument,
 };
 
 /**
@@ -37,15 +37,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GeWebData($id: String!) {\n  webData(id: $id) {\n    contentCollection {\n      items {\n        __typename\n        ... on Page {\n          title\n          slug\n        }\n        ... on PageGroup {\n          title\n          columnsCollection(limit: 4) {\n            items {\n              topicsCollection(limit: 5) {\n                items {\n                  sys {\n                    id\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GeWebData($id: String!) {\n  webData(id: $id) {\n    contentCollection {\n      items {\n        __typename\n        ... on Page {\n          title\n          slug\n        }\n        ... on PageGroup {\n          title\n          columnsCollection(limit: 4) {\n            items {\n              topicsCollection(limit: 5) {\n                items {\n                  sys {\n                    id\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
 export function graphql(source: "query GetColumns {\n  columnsCollection {\n    items {\n      sys {\n        id\n      }\n      topicsCollection {\n        items {\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GetColumns {\n  columnsCollection {\n    items {\n      sys {\n        id\n      }\n      topicsCollection {\n        items {\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(source: "query GeMiddlePages {\n  middlePageCollection {\n    items {\n      sys {\n        id\n      }\n      slug\n      title\n      childrenPagesCollection {\n        items {\n          isInNavbar\n          slug\n          title\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GeMiddlePages {\n  middlePageCollection {\n    items {\n      sys {\n        id\n      }\n      slug\n      title\n      childrenPagesCollection {\n        items {\n          isInNavbar\n          slug\n          title\n        }\n      }\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -53,7 +45,15 @@ export function graphql(source: "query GetPages {\n  pageCollection {\n    items
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "query GeMiddlePages {\n  middlePageCollection {\n    items {\n      sys {\n        id\n      }\n      slug\n      title\n      externalHref\n      childrenPagesCollection(limit: 4) {\n        items {\n          isInNavbar\n          slug\n          title\n          externalHref\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GeMiddlePages {\n  middlePageCollection {\n    items {\n      sys {\n        id\n      }\n      slug\n      title\n      externalHref\n      childrenPagesCollection(limit: 4) {\n        items {\n          isInNavbar\n          slug\n          title\n          externalHref\n        }\n      }\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "query GetTopics {\n  topicCollection {\n    items {\n      title\n      sys {\n        id\n      }\n      itemsCollection {\n        items {\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GetTopics {\n  topicCollection {\n    items {\n      title\n      sys {\n        id\n      }\n      itemsCollection {\n        items {\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GeWebData($id: String!) {\n  webData(id: $id) {\n    contentCollection {\n      items {\n        __typename\n        ... on Page {\n          title\n          slug\n          externalHref\n        }\n        ... on PageGroup {\n          title\n          slug\n          columnsCollection(limit: 4) {\n            items {\n              topicsCollection(limit: 5) {\n                items {\n                  sys {\n                    id\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GeWebData($id: String!) {\n  webData(id: $id) {\n    contentCollection {\n      items {\n        __typename\n        ... on Page {\n          title\n          slug\n          externalHref\n        }\n        ... on PageGroup {\n          title\n          slug\n          columnsCollection(limit: 4) {\n            items {\n              topicsCollection(limit: 5) {\n                items {\n                  sys {\n                    id\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

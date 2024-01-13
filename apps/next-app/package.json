@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "generate:docs": "typedoc",
-    "prettyLogs": "pino-pretty test.log",
     "gql:codegen": "graphql-codegen"
   },
   "dependencies": {
@@ -17,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
+    "@mui/material-nextjs": "^5.15.3",
     "@testing-library/react": "^14.1.2",
     "clsx": "^2.1.0",
     "data-provider-types": "workspace:*",

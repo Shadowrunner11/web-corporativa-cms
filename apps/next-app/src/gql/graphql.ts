@@ -375,6 +375,7 @@ export type EndPage = Entry & {
   __typename?: 'EndPage';
   contentCollection?: Maybe<EndPageContentCollection>;
   contentfulMetadata: ContentfulMetadata;
+  externalHref?: Maybe<Scalars['String']['output']>;
   isInNavbar?: Maybe<Scalars['Boolean']['output']>;
   linkedFrom?: Maybe<EndPageLinkingCollections>;
   slug?: Maybe<Scalars['String']['output']>;
@@ -389,6 +390,12 @@ export type EndPageContentCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lse5yl2mfc70/content_types/endPage) */
+export type EndPageExternalHrefArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -436,6 +443,13 @@ export type EndPageFilter = {
   OR?: InputMaybe<Array<InputMaybe<EndPageFilter>>>;
   contentCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  externalHref?: InputMaybe<Scalars['String']['input']>;
+  externalHref_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  externalHref_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  externalHref_not?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   isInNavbar?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_not?: InputMaybe<Scalars['Boolean']['input']>;
@@ -480,6 +494,8 @@ export type EndPageLinkingCollectionsMiddlePageCollectionArgs = {
 };
 
 export enum EndPageLinkingCollectionsMiddlePageCollectionOrder {
+  ExternalHrefAsc = 'externalHref_ASC',
+  ExternalHrefDesc = 'externalHref_DESC',
   IsInNavbarAsc = 'isInNavbar_ASC',
   IsInNavbarDesc = 'isInNavbar_DESC',
   SlugAsc = 'slug_ASC',
@@ -497,6 +513,8 @@ export enum EndPageLinkingCollectionsMiddlePageCollectionOrder {
 }
 
 export enum EndPageOrder {
+  ExternalHrefAsc = 'externalHref_ASC',
+  ExternalHrefDesc = 'externalHref_DESC',
   IsInNavbarAsc = 'isInNavbar_ASC',
   IsInNavbarDesc = 'isInNavbar_DESC',
   SlugAsc = 'slug_ASC',
@@ -645,6 +663,7 @@ export type MiddlePage = Entry & {
   childrenPagesCollection?: Maybe<MiddlePageChildrenPagesCollection>;
   contentCollection?: Maybe<MiddlePageContentCollection>;
   contentfulMetadata: ContentfulMetadata;
+  externalHref?: Maybe<Scalars['String']['output']>;
   isInNavbar?: Maybe<Scalars['Boolean']['output']>;
   linkedFrom?: Maybe<MiddlePageLinkingCollections>;
   slug?: Maybe<Scalars['String']['output']>;
@@ -670,6 +689,12 @@ export type MiddlePageContentCollectionArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lse5yl2mfc70/content_types/middlePage) */
+export type MiddlePageExternalHrefArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -705,6 +730,8 @@ export type MiddlePageChildrenPagesCollection = {
 };
 
 export enum MiddlePageChildrenPagesCollectionOrder {
+  ExternalHrefAsc = 'externalHref_ASC',
+  ExternalHrefDesc = 'externalHref_DESC',
   IsInNavbarAsc = 'isInNavbar_ASC',
   IsInNavbarDesc = 'isInNavbar_DESC',
   SlugAsc = 'slug_ASC',
@@ -744,6 +771,13 @@ export type MiddlePageFilter = {
   childrenPagesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  externalHref?: InputMaybe<Scalars['String']['input']>;
+  externalHref_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  externalHref_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  externalHref_not?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   isInNavbar?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_not?: InputMaybe<Scalars['Boolean']['input']>;
@@ -801,6 +835,8 @@ export enum MiddlePageLinkingCollectionsTopicCollectionOrder {
 }
 
 export enum MiddlePageOrder {
+  ExternalHrefAsc = 'externalHref_ASC',
+  ExternalHrefDesc = 'externalHref_DESC',
   IsInNavbarAsc = 'isInNavbar_ASC',
   IsInNavbarDesc = 'isInNavbar_DESC',
   SlugAsc = 'slug_ASC',
@@ -1129,6 +1165,7 @@ export enum PageOrder {
 
 export type Query = {
   __typename?: 'Query';
+  _node?: Maybe<_Node>;
   asset?: Maybe<Asset>;
   assetCollection?: Maybe<AssetCollection>;
   columns?: Maybe<Columns>;
@@ -1146,6 +1183,13 @@ export type Query = {
   topicCollection?: Maybe<TopicCollection>;
   webData?: Maybe<WebData>;
   webDataCollection?: Maybe<WebDataCollection>;
+};
+
+
+export type Query_NodeArgs = {
+  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1407,6 +1451,8 @@ export type TopicItemsCollection = {
 };
 
 export enum TopicItemsCollectionOrder {
+  ExternalHrefAsc = 'externalHref_ASC',
+  ExternalHrefDesc = 'externalHref_DESC',
   IsInNavbarAsc = 'isInNavbar_ASC',
   IsInNavbarDesc = 'isInNavbar_DESC',
   SlugAsc = 'slug_ASC',
@@ -1588,6 +1634,10 @@ export enum WebDataOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+export type _Node = {
+  _id: Scalars['ID']['output'];
+};
+
 export type CfColumnsNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfColumnsNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfColumnsNestedFilter>>>;
@@ -1608,6 +1658,13 @@ export type CfEndPageNestedFilter = {
   OR?: InputMaybe<Array<InputMaybe<CfEndPageNestedFilter>>>;
   contentCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  externalHref?: InputMaybe<Scalars['String']['input']>;
+  externalHref_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  externalHref_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  externalHref_not?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   isInNavbar?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_not?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1634,6 +1691,13 @@ export type CfMiddlePageNestedFilter = {
   childrenPagesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  externalHref?: InputMaybe<Scalars['String']['input']>;
+  externalHref_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  externalHref_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  externalHref_not?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_contains?: InputMaybe<Scalars['String']['input']>;
+  externalHref_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   isInNavbar?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_exists?: InputMaybe<Scalars['Boolean']['input']>;
   isInNavbar_not?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1693,36 +1757,36 @@ export type CfcontentMultiTypeNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type GeWebDataQueryVariables = Exact<{
-  id: Scalars['String']['input'];
-}>;
-
-
-export type GeWebDataQuery = { __typename?: 'Query', webData?: { __typename?: 'WebData', contentCollection?: { __typename?: 'WebDataContentCollection', items: Array<{ __typename: 'Page', title?: string | null, slug?: string | null } | { __typename: 'PageGroup', title?: string | null, columnsCollection?: { __typename?: 'PageGroupColumnsCollection', items: Array<{ __typename?: 'Columns', topicsCollection?: { __typename?: 'ColumnsTopicsCollection', items: Array<{ __typename?: 'Topic', sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null } | null> } | null } | null };
-
 export type GetColumnsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetColumnsQuery = { __typename?: 'Query', columnsCollection?: { __typename?: 'ColumnsCollection', items: Array<{ __typename?: 'Columns', sys: { __typename?: 'Sys', id: string }, topicsCollection?: { __typename?: 'ColumnsTopicsCollection', items: Array<{ __typename?: 'Topic', sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
-
-export type GeMiddlePagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GeMiddlePagesQuery = { __typename?: 'Query', middlePageCollection?: { __typename?: 'MiddlePageCollection', items: Array<{ __typename?: 'MiddlePage', slug?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string }, childrenPagesCollection?: { __typename?: 'MiddlePageChildrenPagesCollection', items: Array<{ __typename?: 'EndPage', isInNavbar?: boolean | null, slug?: string | null, title?: string | null } | null> } | null } | null> } | null };
 
 export type GetPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetPagesQuery = { __typename?: 'Query', pageCollection?: { __typename?: 'PageCollection', items: Array<{ __typename?: 'Page', isInNavbar?: boolean | null, slug?: string | null, title?: string | null } | null> } | null };
 
+export type GeMiddlePagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GeMiddlePagesQuery = { __typename?: 'Query', middlePageCollection?: { __typename?: 'MiddlePageCollection', items: Array<{ __typename?: 'MiddlePage', slug?: string | null, title?: string | null, externalHref?: string | null, sys: { __typename?: 'Sys', id: string }, childrenPagesCollection?: { __typename?: 'MiddlePageChildrenPagesCollection', items: Array<{ __typename?: 'EndPage', isInNavbar?: boolean | null, slug?: string | null, title?: string | null, externalHref?: string | null } | null> } | null } | null> } | null };
+
 export type GetTopicsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetTopicsQuery = { __typename?: 'Query', topicCollection?: { __typename?: 'TopicCollection', items: Array<{ __typename?: 'Topic', title?: string | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'TopicItemsCollection', items: Array<{ __typename?: 'MiddlePage', sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
+export type GeWebDataQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+}>;
 
-export const GeWebDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GeWebData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"webData"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contentCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Page"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PageGroup"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"columnsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"4"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"topicsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"5"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GeWebDataQuery, GeWebDataQueryVariables>;
+
+export type GeWebDataQuery = { __typename?: 'Query', webData?: { __typename?: 'WebData', contentCollection?: { __typename?: 'WebDataContentCollection', items: Array<{ __typename: 'Page', title?: string | null, slug?: string | null, externalHref?: string | null } | { __typename: 'PageGroup', title?: string | null, slug?: string | null, columnsCollection?: { __typename?: 'PageGroupColumnsCollection', items: Array<{ __typename?: 'Columns', topicsCollection?: { __typename?: 'ColumnsTopicsCollection', items: Array<{ __typename?: 'Topic', sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null } | null> } | null } | null };
+
+
 export const GetColumnsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetColumns"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"columnsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"topicsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetColumnsQuery, GetColumnsQueryVariables>;
-export const GeMiddlePagesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GeMiddlePages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"middlePageCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"childrenPagesCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"isInNavbar"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GeMiddlePagesQuery, GeMiddlePagesQueryVariables>;
 export const GetPagesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pageCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"isInNavbar"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]} as unknown as DocumentNode<GetPagesQuery, GetPagesQueryVariables>;
+export const GeMiddlePagesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GeMiddlePages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"middlePageCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"externalHref"}},{"kind":"Field","name":{"kind":"Name","value":"childrenPagesCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"4"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"isInNavbar"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"externalHref"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GeMiddlePagesQuery, GeMiddlePagesQueryVariables>;
 export const GetTopicsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetTopics"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"topicCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"itemsCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetTopicsQuery, GetTopicsQueryVariables>;
+export const GeWebDataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GeWebData"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"webData"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contentCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Page"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"externalHref"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PageGroup"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"columnsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"4"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"topicsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"5"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GeWebDataQuery, GeWebDataQueryVariables>;

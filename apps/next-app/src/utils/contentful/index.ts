@@ -8,7 +8,4 @@ export async function contentfulGqlFetch<T = any>(documentName: string, query: s
   return responseData.data[documentName].items
 }
 
-
-
-
 export const getContentfulIdOrEmpty = pathOr<string>('', ['sys', 'id'])
