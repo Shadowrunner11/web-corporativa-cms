@@ -22,6 +22,8 @@ jobs:
         with:
           version: 8
           run_install: false
+      - name: change npmrc
+        run: mv .npmrc.production .npmrc
       - name: Build ui
         working-directory: ./packages/ui-material
         run: |
