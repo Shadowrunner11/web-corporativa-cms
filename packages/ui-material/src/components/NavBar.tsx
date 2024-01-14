@@ -1,7 +1,7 @@
 import { AppBar, AppBarProps, Box, Drawer, IconButton, Stack, Toolbar } from '@mui/material'
 import { Close as CloseIcon, Menu as MenuIcon } from '@mui/icons-material'
 import { ReactNode, useCallback, useReducer } from 'react'
-import { LogoPacificoIcon } from './icons'
+import { LogoPacificoIcon } from './Icons'
 import { toggleReduce } from '../utils';
 
 export interface NavbarProps extends AppBarProps {

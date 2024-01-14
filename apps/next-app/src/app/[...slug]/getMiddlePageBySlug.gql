@@ -1,0 +1,16 @@
+query GetMiddlePageBySlug($slug: String!) {
+  middlePageCollection(where: { slug: $slug }, limit: 1) {
+    items {
+      title
+      slug
+      contentCollection(limit: 10) {
+        items {
+          __typename
+          sys {
+            id
+          }
+        }
+      }
+    }
+  }
+}

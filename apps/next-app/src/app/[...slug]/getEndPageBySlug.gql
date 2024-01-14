@@ -1,0 +1,16 @@
+query GetEndPageBySlug($slug: String!) {
+  endPageCollection(where: { slug: $slug }, limit: 1) {
+    items {
+      slug
+      title
+      contentCollection(limit: 10) {
+        items {
+          __typename
+          sys {
+            id
+          }
+        }
+      }
+    }
+  }
+}

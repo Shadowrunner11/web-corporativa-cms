@@ -1,3 +1,5 @@
+import { SxProps } from "@mui/material";
+
 export interface SubmenuItem {
   label: string;
   url?: string;
@@ -7,6 +9,8 @@ export interface SubmenuItem {
 export interface Group {
   label: string;
   items: SubmenuItem[];
+  sxItems?: SxProps;
+  sxLabels?: SxProps;
 }
 
 export interface Column {

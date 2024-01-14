@@ -1,6 +1,6 @@
 import { indexBy, path, pathOr} from "ramda";
 
-import { Columns, EndPage, MiddlePage, Topic } from "@/gql/graphql";
+import { Columns, EndPage, MiddlePage, Topic, WebDataContentItem } from "@/gql/graphql";
 import { getContentfulIdOrEmpty } from "@/utils/contentful";
 
 export const getById = <T = unknown>(data: Record<string, T>)=> (id: string)=>data[id];
@@ -15,3 +15,4 @@ export const getMiddlePages = getItemsOrArray<MiddlePage>('itemsCollection')
 export const getTopics = getItemsOrArray<Topic>('topicsCollection')
 export const getColumns = getItemsOrArray<Columns>('columnsCollection')
 export const getEndPages = getItemsOrArray<EndPage>('childrenPagesCollection')
+export const getWebContentCollection = getItemsOrArray<WebDataContentItem>('contentCollection')

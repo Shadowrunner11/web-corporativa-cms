@@ -1,0 +1,21 @@
+query GetCategoryHeroById($id: String!) {
+  categoryHero(id: $id) {
+    subtitle
+    title
+    sxStyles
+    image{
+      description
+      url
+    }
+    cta{
+      classNames
+      text
+      id
+      sxStyles
+      image{
+        description
+        url
+      }
+    }
+  }
+}

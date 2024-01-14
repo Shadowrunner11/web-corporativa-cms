@@ -1,1 +1,1 @@
-export const globalLogs = false
+export const globalLogs = true

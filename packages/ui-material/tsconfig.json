@@ -3,7 +3,8 @@
     "./src/**/*.tsx",
     "@types/node",
     "./src/**/*.ts",
-    "__tests__"
+    "__tests__",
+    "**/*.ts"
   ],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,

@@ -5,7 +5,7 @@ import queryGetColumns from 'raw-loader!./getColumns.gql'
 import queryGetTopics from 'raw-loader!../../graphqlDocuments/getTopics.gql'
 import queryGetMiddlePages from 'raw-loader!../../graphqlDocuments/getMiddlePages.gql'
 import { withLogger } from "@/utils/common";
-import { contentfulGqlFetch } from "@/utils/contentful";
+import { fetchContentfulCollectionGql } from "@/utils/contentful";
 import { getEndPages } from "@/utils/contentful/parseNavigationData";
 import { globalCacheEnvService } from "@/modules";
 
@@ -33,10 +33,10 @@ export const resolveMiddlePage = (middlePagesById: Record<string, MiddlePage>, b
 }
 
 export const fetchNavigationData = async ()=> await Promise.all([
-  contentfulGqlFetch('pageCollection', queryGetPages),
-  contentfulGqlFetch('columnsCollection', queryGetColumns),
-  contentfulGqlFetch('topicCollection', queryGetTopics),
-  contentfulGqlFetch('middlePageCollection', queryGetMiddlePages)
+  fetchContentfulCollectionGql('pageCollection', queryGetPages),
+  fetchContentfulCollectionGql('columnsCollection', queryGetColumns),
+  fetchContentfulCollectionGql('topicCollection', queryGetTopics),
+  fetchContentfulCollectionGql('middlePageCollection', queryGetMiddlePages)
 ])
 
 fetchNavigationData.withLogs = withLogger(fetchNavigationData)
@@ -48,6 +48,6 @@ export const resolveSlugPrefix = ()=>{
     case 'relative': 
       return './'
     default:
-      return basePath?  `${basePath}/` : ''
+      return basePath?  `${basePath}/` : '/'
   }
 }
