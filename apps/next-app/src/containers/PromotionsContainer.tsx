@@ -39,9 +39,9 @@ export const PromotionsContainer = ({
       </Typography>
       <Box paddingBlock={4} gap={3} display='flex'flexWrap='wrap' justifyContent='center'>
         {
-          cards.map((props)=><PromotionCard 
+          cards.map((props, index)=><PromotionCard 
             {...props} 
-            key={props.id}
+            key={props.id ?? index}
           />)
         }
       </Box>
