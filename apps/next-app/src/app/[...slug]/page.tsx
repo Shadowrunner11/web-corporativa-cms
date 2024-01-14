@@ -1,15 +1,17 @@
 
-import { PageGroup } from "@/gql/graphql";
-import { getContentfulIdOrEmpty } from "@/utils/contentful";
+import { PageGroup, Entry } from "@/gql/graphql";
+import { getContentfulIdOrEmpty, getType } from "@/utils/contentful";
 import { getNavigationData } from "@/utils/contentful/navigationDataFetch";
 import { 
   getByContentfulId, 
   getColumns, 
   getEndPages, 
+  getItemsOrArray, 
   getMiddlePages, 
   getTopics 
 } from "@/utils/contentful/parseNavigationData";
-
+import { containers, getBySlug } from "./utils";
+import { Box } from "@mui/material";
 
 
 // TODO: this actually is n pow 3, there should be a way to lessen complexity
@@ -52,10 +54,21 @@ export async function generateStaticParams(){
 
 interface PageProps{
   params:{
-    slug: string
+    slug: string[]
   }
 }
 
-export default function Page({params: {slug}}: Readonly<PageProps>){
-  return <div>{slug}</div>
+export default async function Page({params: {slug}}: Readonly<PageProps>){
+  const contentData = getItemsOrArray<Entry>('contentCollection')(await getBySlug(slug))
+    .map((content)=>({id: getContentfulIdOrEmpty(content), componentType:getType(content)}))
+    
+  return (<Box sx={{
+    marginTop: 8
+  }}>
+    {contentData.map(({id, componentType})=> {
+      const Component = containers[componentType]
+
+      return <Component key={id} id={id}/>
+    })}
+  </Box>)
 }

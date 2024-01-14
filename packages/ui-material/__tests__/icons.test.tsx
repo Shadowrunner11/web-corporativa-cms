@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, it, vi } from "vitest";
-import LogoPacifico from "../src/components/icons/LogoPacifico";
+import LogoPacifico from "../src/components/Icons/LogoPacifico";
 import userEvent from "@testing-library/user-event";
 import { ConcaveWave } from "../src";
 

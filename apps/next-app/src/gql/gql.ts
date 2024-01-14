@@ -13,6 +13,10 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "query GetMiddlePageBySlug($slug: String!) {\n  middlePageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}": types.GetMiddlePageBySlugDocument,
+    "query GetPageBySlug($slug: String!) {\n  pageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}": types.GetPageBySlugDocument,
+    "query GetEndPageBySlug($slug: String!) {\n  endPageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}": types.GetEndPageBySlugDocument,
+    "query GetCategoryHeroById($id: String!) {\n  categoryHero(id: $id) {\n    subtitle\n    title\n    image {\n      description\n      url\n    }\n    sxStyles\n    cta {\n      classNames\n      text\n      id\n      sxStyles\n    }\n  }\n}": types.GetCategoryHeroByIdDocument,
     "query GetColumns {\n  columnsCollection {\n    items {\n      sys {\n        id\n      }\n      topicsCollection {\n        items {\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}": types.GetColumnsDocument,
     "query GetPages {\n  pageCollection {\n    items {\n      isInNavbar\n      slug\n      title\n    }\n  }\n}": types.GetPagesDocument,
     "query GeMiddlePages {\n  middlePageCollection {\n    items {\n      sys {\n        id\n      }\n      slug\n      title\n      externalHref\n      childrenPagesCollection(limit: 4) {\n        items {\n          isInNavbar\n          slug\n          title\n          externalHref\n        }\n      }\n    }\n  }\n}": types.GeMiddlePagesDocument,
@@ -34,6 +38,22 @@ const documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetMiddlePageBySlug($slug: String!) {\n  middlePageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GetMiddlePageBySlug($slug: String!) {\n  middlePageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetPageBySlug($slug: String!) {\n  pageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GetPageBySlug($slug: String!) {\n  pageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetEndPageBySlug($slug: String!) {\n  endPageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query GetEndPageBySlug($slug: String!) {\n  endPageCollection(where: {slug: $slug}, limit: 1) {\n    items {\n      slug\n      title\n      contentCollection(limit: 10) {\n        items {\n          contentfulMetadata {\n            __typename\n          }\n          sys {\n            id\n          }\n        }\n      }\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query GetCategoryHeroById($id: String!) {\n  categoryHero(id: $id) {\n    subtitle\n    title\n    image {\n      description\n      url\n    }\n    sxStyles\n    cta {\n      classNames\n      text\n      id\n      sxStyles\n    }\n  }\n}"): (typeof documents)["query GetCategoryHeroById($id: String!) {\n  categoryHero(id: $id) {\n    subtitle\n    title\n    image {\n      description\n      url\n    }\n    sxStyles\n    cta {\n      classNames\n      text\n      id\n      sxStyles\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

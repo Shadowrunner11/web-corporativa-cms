@@ -1,26 +1,23 @@
 import { MiddlePage, Topic, WebDataContentItem } from "@/gql/graphql";
-import { contentfulGqlFetch } from ".";
+import { fetchContentfulCollectionGql, fetchContentfulGql } from ".";
 import getWebData from 'raw-loader!/src/graphqlDocuments/getWebData.gql'
 import getTopics from 'raw-loader!/src/graphqlDocuments/getTopics.gql'
 import queryGetMiddlePages from 'raw-loader!/src/graphqlDocuments/getMiddlePages.gql'
-import { globalEnvService, graphqlClient } from "@/modules";
+import { globalEnvService } from "@/modules";
+import { getWebContentCollection } from "./parseNavigationData";
 
 const fetchWebData = async ()=>{
-  const { data: mainData } = await graphqlClient.request(getWebData, {
+  const data = await fetchContentfulGql('webData', getWebData, {
     variables:{
       id: globalEnvService.getEnvOrThrow('WEB_ID')
     }
   })
 
-  return mainData
-    .data
-    .webData
-    .contentCollection
-    .items as WebDataContentItem[]
+  return getWebContentCollection(data)
 }
 
 export const getNavigationData = ()=> Promise.all([
   fetchWebData(),
-  contentfulGqlFetch<Topic>('topicCollection', getTopics),
-  contentfulGqlFetch<MiddlePage>('middlePageCollection', queryGetMiddlePages)
+  fetchContentfulCollectionGql<Topic>('topicCollection', getTopics),
+  fetchContentfulCollectionGql<MiddlePage>('middlePageCollection', queryGetMiddlePages)
 ])
