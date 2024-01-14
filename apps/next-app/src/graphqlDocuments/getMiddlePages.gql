@@ -1,0 +1,20 @@
+query GeMiddlePages {
+  middlePageCollection {
+    items {
+      sys {
+        id
+      }
+      slug
+      title
+      externalHref
+      childrenPagesCollection(limit: 4) {
+        items {
+          isInNavbar
+          slug
+          title
+          externalHref
+        }
+      }
+    }
+  }
+}

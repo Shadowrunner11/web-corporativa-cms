@@ -7,6 +7,12 @@ import data from '../../mock/data/navbar.json'
 import { CMSResolver, ContentfulCMSProvider, GetOneRawResponse, SectionResponse } from "@/services/ContenfulCMSProvider";
 import { RequestInit } from "@/services/FetchClient";
 import { GraphQLClient } from "@/services/GraphQLCLient";
+import { CacheEnvironmentConfig } from "@/services/Enviroment/CacheEnviromentConfig";
+import { EnvironmentConfig } from "@/services/Enviroment/EnviromentConfig";
+
+export const globalEnvService = new EnvironmentConfig();
+
+export const globalCacheEnvService = new CacheEnvironmentConfig(globalEnvService);
 
 container.registerInstance('DataTable', {pages: {
   staticData:{
@@ -20,10 +26,11 @@ container.registerInstance('DataTable', {pages: {
 }})
 
 container.registerInstance<RequestInit>('FetchOptions',{
-  baseURL: 'https://graphql.contentful.com/content/v1/spaces/f9g0ncoxwgr2',
+  baseURL: globalCacheEnvService.getEnv('CMS_URL'),
   headers:{
-    'Authorization': 'Bearer S0pDoN18OfScFo--CvJ1n1vhST7xCqKpvsSpBiKs2mE'
-  }
+    'Authorization': globalCacheEnvService.getEnv('CMS_TOKEN')
+  },
+  cache: globalCacheEnvService.getEnv('NO_CACHE') ?'no-cache' : undefined
 })
 
 
@@ -48,8 +55,9 @@ const ProvidersMap: Record<string, any> = {
 }
 
 
-const currentProviderName = process.env['NEXT_DATA_PROVIDER'] 
-  ?? 'contentfulProvider'
+const currentProviderName = globalCacheEnvService.getEnv('NEXT_DATA_PROVIDER', {
+  defaultValue: 'contentfulProvider'
+})
 
 container
   .registerSingleton(

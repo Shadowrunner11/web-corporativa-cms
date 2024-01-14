@@ -1,15 +1,6 @@
 [*]
 indent_style = space
 indent_size = 2
-
-[*.html]
-indent_style = space
-indent_size = 2
-
-[*.css]
-indent_style = space
-indent_size = 2
-
-[*.py]
-indent_style = space
-indent_size = 2
+end_of_line = lf
+insert_final_newline = false
+root = true

@@ -2,7 +2,7 @@ import { MouseEvent, useCallback, useContext } from "react"
 import { Button, Drawer, DrawerProps, ButtonProps } from "@mui/material"
 import { ExpandLess, ExpandMore } from "@mui/icons-material"
 import { contextMenu } from "./context";
-import { defaultMenuDrawerDefaultSx as defaultMenuDrawerDefaultSx } from "./styles";
+import { defaultMenuDrawerDefaultSx } from "./styles";
 
 export interface SubMenuButtonProps extends ButtonProps{
   label: string;

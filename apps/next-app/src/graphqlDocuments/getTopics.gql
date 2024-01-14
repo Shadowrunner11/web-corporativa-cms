@@ -1,0 +1,17 @@
+query GetTopics {
+  topicCollection {
+    items {
+      title
+      sys {
+        id
+      }
+      itemsCollection {
+        items {
+          sys {
+            id
+          }
+        }
+      }
+    }
+  }
+}

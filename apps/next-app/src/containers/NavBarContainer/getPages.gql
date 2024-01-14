@@ -1,0 +1,10 @@
+query GetPages {
+ 	pageCollection{
+		items{
+			isInNavbar
+			slug
+			title
+		}
+	}
+}
+

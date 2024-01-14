@@ -1,7 +1,0 @@
-query Section($id: String!) {
-  section(id: $id) {
-    name
-    props
-    title
-  }
-}

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate:docs": "typedoc",
-    "prettyLogs": "pino-pretty test.log"
+    "gql:codegen": "graphql-codegen"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
@@ -16,10 +16,13 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
-    "@testing-library/react": "^14.1.2",
+    "@mui/material-nextjs": "^5.15.3",
+    "clsx": "^2.1.0",
+    "graphql": "^16.8.1",
+    "next": "14.0.4",
+    "ramda": "^0.29.1",
     "data-provider-types": "workspace:*",
     "material-react-table": "^2.6.1",
-    "next": "14.0.1",
     "pino": "^8.17.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -28,12 +31,18 @@
     "ui-material": "workspace:*"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.1.2",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@types/ramda": "^0.29.9",
     "@testing-library/jest-dom": "^6.2.0",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^0.34.6",
+    "dotenv": "^16.3.1",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.1",
     "jsdom": "^22.1.0",

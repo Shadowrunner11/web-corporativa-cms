@@ -1,0 +1,29 @@
+query GeWebData($id: String!) {
+  webData(id: $id) {
+    contentCollection {
+      items {
+        __typename
+        ... on Page {
+          title
+          slug
+          externalHref
+        }
+        ... on PageGroup {
+          title
+          slug
+          columnsCollection(limit: 4) {
+            items {
+              topicsCollection(limit: 5) {
+                items {
+                  sys {
+                    id
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

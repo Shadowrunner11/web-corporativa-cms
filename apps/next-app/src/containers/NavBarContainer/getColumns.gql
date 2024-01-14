@@ -1,0 +1,16 @@
+query GetColumns {
+	columnsCollection{
+		items{
+			sys{
+				id
+			}
+			topicsCollection{
+				items{
+					sys{
+						id
+					}
+				}
+			}
+		}
+	}
+}

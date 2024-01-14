@@ -6,7 +6,7 @@ import { GraphQLClient } from '.'
 import { FetchClient } from '../FetchClient'
 
 //@ts-expect-error
-import query from './test.gql?raw'
+import query from './test.graphql?raw'
 
 const fetchClient = new FetchClient()
 
