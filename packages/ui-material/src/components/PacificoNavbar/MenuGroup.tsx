@@ -7,20 +7,21 @@ export interface MenuGroupProps extends Group{
     LinkComponent?: FC<LinkProps>
 }
 
-const MenuGroup = ({items, label, LinkComponent = Link}: MenuGroupProps)=>(
+const MenuGroup = ({items, label, sxItems, sxLabels, LinkComponent = Link}: MenuGroupProps)=>(
   <Stack gap={2}>
-    <Typography sx={{fontWeight: 'bold'}}>
+    <Typography sx={sxLabels}>
       {label}
     </Typography>
     {
       items.map(({label, url, items})=> items?.length ? (
         <NavSubmenu
-        key={label} 
+          sx={sxItems}
+          key={label} 
           label={label} 
           items={items.concat([{url, label: 'Ver categoria'}]).map(({url, label})=>({href: url, children: label}))} 
         />
       ) :(
-        <LinkComponent key={label} href={url}>
+        <LinkComponent key={label} href={url} sx={sxItems}>
           {label}
         </LinkComponent>
       ))
