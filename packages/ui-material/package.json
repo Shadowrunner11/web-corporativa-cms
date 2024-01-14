@@ -29,6 +29,7 @@
     "jsdom": "^22.1.0",
     "pino": "^8.17.2",
     "pino-pretty": "^10.3.1",
+    "postcss": "^8.4.33",
     "tsup": "^7.2.0",
     "typescript": "^5.3.3",
     "vitest": "^0.34.6"
