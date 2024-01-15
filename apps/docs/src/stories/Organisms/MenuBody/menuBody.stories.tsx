@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { BodyMenu } from "ui-material";
-import { columns } from "../../stubs/navbaritems";
+import { columns } from "../../../stubs/navbaritems";
 
 const meta = {
   title: "Molecules/Menu Body",
