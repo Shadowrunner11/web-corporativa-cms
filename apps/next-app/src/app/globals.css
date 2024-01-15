@@ -4,6 +4,7 @@ body{
 
 a, a:visited, a:focus, a:hover{
   text-decoration: none;
+  text-decoration-line: none;
 }
 
 main{

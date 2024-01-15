@@ -1,0 +1,1 @@
+cp -r .next/static .next/standalone/apps/next-app/.next 

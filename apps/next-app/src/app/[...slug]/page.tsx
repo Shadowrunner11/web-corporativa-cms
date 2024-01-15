@@ -61,7 +61,7 @@ interface PageProps{
 export default async function Page({params: {slug}}: Readonly<PageProps>){
   const contentData = getItemsOrArray<Entry>('contentCollection')(await getBySlug(slug))
     .map((content)=>({id: getContentfulIdOrEmpty(content), componentType:getType(content)}))
-    
+
   return (<Box sx={{
     marginTop: 8
   }}>

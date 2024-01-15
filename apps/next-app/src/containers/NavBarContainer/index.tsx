@@ -15,6 +15,8 @@ import { LayoutNavbar } from "@/components/LayoutNavbar";
 import { resolveMiddlePage, resolveSlugPrefix } from "./utils";
 import pino from "pino";
 import { globalLogs } from "./config";
+import { RequestOptions } from "@/services/GraphQLCLient";
+import { asyncPipe } from "@/utils/common";
 
 
 const logger =  pino(pino.destination({
@@ -30,8 +32,8 @@ const loggerRequests = pino(pino.destination({
   sync: true
 }))
 
-const getNavigationDataWrapper = async ()=>{
-  const navigationData = await getNavigationData()
+const getNavigationDataWrapper = async (options?: RequestOptions)=>{
+  const navigationData = await getNavigationData(options)
 
   if(globalLogs)
     loggerRequests.info({navigationData})
@@ -40,8 +42,12 @@ const getNavigationDataWrapper = async ()=>{
 
 }
 
-async function parseNavigationData(): Promise<PacificoNavbarItem[]>{
-  const [pagesOrGroup, topics, middlePages] = await getNavigationDataWrapper()
+type NavData = Awaited<ReturnType<typeof getNavigationDataWrapper>>;
+
+// TODOL this should be a strategy pattern, separting
+// the stragty for fetchin and the strategy for parsing
+function parseNavigationData(data:NavData ): PacificoNavbarItem[]{
+  const [pagesOrGroup, topics, middlePages] = data
   const slugPrefix = resolveSlugPrefix()
 
   const middlePagesById = indexBy(getContentfulIdOrEmpty, middlePages)
@@ -75,16 +81,22 @@ async function parseNavigationData(): Promise<PacificoNavbarItem[]>{
   })
 }
 
-parseNavigationData.withLogs = async ()=>{
-  const data  = await parseNavigationData();
+parseNavigationData.withLogs = (data: NavData)=>{
+  const parsedData  = parseNavigationData(data);
 
   if(globalLogs)
-    logger.info({data})
-  return data
+    logger.info({parsedData})
+
+  return parsedData
 }
 
-export default async function NavbarContainer(){
-  const data = await parseNavigationData.withLogs();
 
-  return <LayoutNavbar items={data} />
+// TODO: create a way to get config of petition via keys
+export default async function NavbarContainer(){
+  const parsedData = await asyncPipe<RequestOptions, PacificoNavbarItem[]>(
+    getNavigationDataWrapper, 
+    parseNavigationData
+  )()
+
+  return <LayoutNavbar items={parsedData} />
 }

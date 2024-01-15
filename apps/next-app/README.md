@@ -15,3 +15,7 @@ To prettify logs and save
 ```bash
 cat requests.log | pnpm pino-pretty >> prettyRequests.log
 ```
+
+## Roadmap
+
+- [ ] Define cache architecture
