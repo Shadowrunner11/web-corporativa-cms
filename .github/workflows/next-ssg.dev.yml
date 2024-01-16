@@ -36,6 +36,10 @@ jobs:
           WEB_ID: ${{ vars.WEB_ID }}
         working-directory: ./apps/next-app
         run: |
+          echo $CMS_URL
+          echo "CMS_URL=$CMS_URL" >> .env
+          echo "CMS_TOKEN=$CMS_TOKEN >> .env"
+          echo "WEB_ID=$WEB_ID >> .env"
           pnpm install
           pnpm build
       - name: Deploy to GitHub Pages
