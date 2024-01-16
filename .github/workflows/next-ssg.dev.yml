@@ -25,6 +25,7 @@ jobs:
       - name: Build ui
         working-directory: ./packages/ui-material
         run: |
+          rm -rf *-lock.yaml
           rm package.json && mv package.production.json package.json
           pnpm install
           pnpm build
