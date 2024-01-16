@@ -1,8 +1,13 @@
 name: Next Build on Contentful Publish Event
+
 on:
   repository_dispatch:
     types: [publish-event]
 
+permissions:
+  contents: write
+  pages: write
+    
 jobs:
   deploy:
     runs-on: ubuntu-latest
