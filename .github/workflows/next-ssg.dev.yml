@@ -33,7 +33,7 @@ jobs:
           BASE_PATH: /web-corporativa-cms/next-ssg
           CMS_TOKEN: ${{ secrets.CMS_TOKEN }}
           CMS_URL: ${{ secrets.CMS_URL }}
-          WEB_ID: ${{ vars.CMS_URL }}
+          WEB_ID: ${{ vars.WEB_ID }}
         working-directory: ./apps/next-app
         run: |
           pnpm install
