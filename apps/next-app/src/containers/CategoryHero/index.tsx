@@ -28,8 +28,6 @@ export async function CategoryHeroContainer({ id }: Readonly<EntryComponentProps
     }
   )
 
-  console.log({image})
-
   return (<CategoryHero 
     ctaText={cta?.text ?? ''} 
     sx={sxStyles} 
