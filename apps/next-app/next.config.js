@@ -7,6 +7,11 @@ const nextConfig = {
     fetches:{
       fullUrl: true
     }
+  },
+  images:{
+    remotePatterns:[{
+      hostname: process.env['ASSET_HOSTNAME'] ?? 'images.ctfassets.net'
+    }]
   }
 }
 

@@ -6,6 +6,8 @@ query GetCategoryHeroById($id: String!) {
     image{
       description
       url
+      height
+      width
     }
     cta{
       classNames
