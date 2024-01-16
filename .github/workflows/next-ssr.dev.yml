@@ -28,6 +28,10 @@ jobs:
       - name: Build
         env:
           OUTPUT: standalone
+          CMS_TOKEN: ${{ secrets.CMS_TOKEN }}
+          CMS_URL: ${{ secrets.API_CMS_URL }}
+          WEB_ID: ${{ vars.WEB_ID }}
+          NO_CACHE: 1
         working-directory: ./apps/next-app
         run: |
           pnpm install
