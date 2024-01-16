@@ -11,7 +11,8 @@ const nextConfig = {
   images:{
     remotePatterns:[{
       hostname: process.env['ASSET_HOSTNAME'] ?? 'images.ctfassets.net'
-    }]
+    }],
+    unoptimized: process.env['OUTPUT'] === 'export'
   }
 }
 
