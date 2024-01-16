@@ -25,6 +25,9 @@ container.registerInstance('DataTable', {pages: {
   }
 }})
 
+// eslint-disable-next-line no-console
+console.log({a:globalCacheEnvService.getEnv('CMS_TOKEN')})
+
 container.registerInstance<RequestInit>('FetchOptions',{
   baseURL: globalCacheEnvService.getEnv('CMS_URL'),
   headers:{
