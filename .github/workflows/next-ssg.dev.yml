@@ -31,7 +31,10 @@ jobs:
       - name: Build
         env:
           OUTPUT: export
-          BASE_PATH: /poc-web-corporativa/next-ssg
+          BASE_PATH: /web-corporativa-cms/next-ssg
+          CMS_TOKEN: ${{ secrets.CMS_TOKEN }}
+          CMS_URL: ${{ secrets.CMS_URL }}
+          WEB_ID: ${{ vars.CMS_URL }}
         working-directory: ./apps/next-app
         run: |
           pnpm install
