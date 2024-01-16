@@ -1,0 +1,5 @@
+@use '../../node_modules/ui-material/dist/paletteVars.scss';
+
+body {
+  color: paletteVars.$palette-error-main;
+}
